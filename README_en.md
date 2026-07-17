@@ -23,7 +23,7 @@ Trigger Circle to Search on any Android 9–16 device
 3. Set up the trigger method
    - Launching MiCTS will trigger, so you can use other apps like Quick Ball, Xposed Edge, ShortX, etc., set launching MiCTS as the action to customize the trigger method
    - MiCTS provides a trigger tile, so you can add it to the Quick Settings panel and trigger by clicking it
-   - For Xiaomi devices, MiCTS has built-in support for `Trigger by long press gesture handle` and `Trigger by long press home button`, which can be enabled in the MiCTS settings (need to activate the module and restart the phone after installing MiCTS)
+   - For Xiaomi devices, MiCTS has built-in support for long-press gesture handle, Home, and Back triggers. Each trigger can be enabled independently in MiCTS settings (activate the module and restart the phone after installing MiCTS)
    - For Samsung devices running Android 13 and above, you can download and install "Routines+" from the [Galaxy Store](https://galaxystore.samsung.com/detail/com.samsung.android.app.routineplus) or [Good Lock](https://galaxystore.samsung.com/detail/com.samsung.android.goodlock). Then, go to Settings > Modes and Routines to create routines that launch MiCTS by Button action such as long-pressing the power button.
    
 
@@ -49,8 +49,8 @@ Need to activate the module in LSPosed
 - Trigger by long press gesture handle: Only supports on Xiaomi devices. Need to add System Launcher/POCO Launcher to the scope in LSPosed
 
 
-- Trigger by long press home button: Only supports on Xiaomi devices. Need to add System Framework to the scope in LSPosed
-- Trigger by long press back button: Only supports on Xiaomi devices. Need to add System Framework to the scope in LSPosed; when enabled it replaces the current long-press back action, and when disabled it preserves the original action
+- Trigger by long press home button: Only supports Xiaomi devices. Add System Framework to the LSPosed scope; disabling it preserves the system's original action
+- Trigger by long press back button: Only supports Xiaomi devices. Add System Framework to the LSPosed scope; enabling it replaces the current long-press Back action, while disabling it preserves the original action. Verified on a Redmi K80 Pro running Android 15 HyperOS
 
 
 - Device spoof for Google: Need to add Google to the scope in LSPosed
@@ -80,6 +80,12 @@ This issue should not occur when the `System trigger service` is set to `CSHelpe
 You can contribute translation through [Crowdin](https://crowdin.com/project/micts)
 
 If you need to contribute a new language, please submit an issue first
+
+## Acknowledgements
+
+- Thanks to the original author and every contributor of [parallelcc/MiCTS](https://github.com/parallelcc/MiCTS), on which this fork is based
+- Thanks to LSPosed, YukiHookAPI, and the related open-source projects that provide the underlying capabilities
+- This fork adds an independent long-press Back trigger while preserving the system's original key action when the option is disabled
 
 ## Star History
 

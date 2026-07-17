@@ -23,7 +23,7 @@
 3. 设置触发方式
     - 打开MiCTS即可触发，因此可以利用其他软件，比如悬浮球、Xposed Edge、ShortX等，将动作设置为打开MiCTS，实现自定义触发方式
     - MiCTS提供了一个触发磁贴，可将其添加到快速设置面板里，通过点击磁贴触发
-    - 对于小米设备，MiCTS内置了长按小白条触发和长按Home键触发的功能，可以在MiCTS设置里开启（安装MiCTS后需要激活模块并重启手机才能使用）
+    - 对于小米设备，MiCTS内置了长按小白条、长按Home键和长按返回键触发功能，可以在MiCTS设置里分别开启（安装MiCTS后需要激活模块并重启手机才能使用）
     - 对于Android版本>=13的三星设备，可以从[三星应用商店](https://galaxystore.samsung.com/detail/com.samsung.android.app.routineplus)或[Good Lock](https://galaxystore.samsung.com/detail/com.samsung.android.goodlock)里下载安装“日常程序+”，然后在“设置-模式和日常程序”里，创建日常程序通过按钮操作实现长按电源按钮等方式来启动MiCTS
 
 ## 设置
@@ -49,8 +49,8 @@
 - 长按小白条触发：仅支持小米设备，依赖作用域选择系统桌面
 
 
-- 长按Home键触发：仅支持小米设备，依赖作用域选择系统框架
-- 长按返回键触发：仅支持小米设备，依赖作用域选择系统框架；启用时替代当前的长按返回键动作，关闭时保留原始动作
+- 长按Home键触发：仅支持小米设备，依赖作用域选择系统框架；关闭时保留系统原始动作
+- 长按返回键触发：仅支持小米设备，依赖作用域选择系统框架；启用时替代当前的长按返回键动作，关闭时保留原始动作。已在 Redmi K80 Pro / Android 15 HyperOS 上实机验证
 
  
 - Google机型伪装：依赖作用域选择Google
@@ -78,6 +78,12 @@ Google不是最新版，更新一下
 你可以通过[Crowdin](https://crowdin.com/project/micts)贡献翻译
 
 如果你需要贡献一个新的语言，请先提交一个issue
+
+## 致谢
+
+- 感谢 [parallelcc/MiCTS](https://github.com/parallelcc/MiCTS) 原作者及所有贡献者，本分支基于该项目开发
+- 感谢 LSPosed、YukiHookAPI 及相关开源项目提供的基础能力
+- 本分支新增独立的长按返回键触发开关，并保留关闭开关时的系统原始按键行为
 
 ## Star History
 
