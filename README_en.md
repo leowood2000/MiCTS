@@ -50,6 +50,7 @@ Need to activate the module in LSPosed
 
 
 - Trigger by long press home button: Only supports on Xiaomi devices. Need to add System Framework to the scope in LSPosed
+- Trigger by long press back button: Only supports on Xiaomi devices. Need to add System Framework to the scope in LSPosed; when enabled it replaces the current long-press back action, and when disabled it preserves the original action
 
 
 - Device spoof for Google: Need to add Google to the scope in LSPosed

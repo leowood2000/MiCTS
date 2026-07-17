@@ -2,8 +2,10 @@ package com.parallelc.micts.hooker
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.view.KeyEvent
 import com.parallelc.micts.config.XposedConfig.CONFIG_NAME
 import com.parallelc.micts.config.XposedConfig.DEFAULT_CONFIG
+import com.parallelc.micts.config.XposedConfig.KEY_BACK_TRIGGER
 import com.parallelc.micts.config.XposedConfig.KEY_HOME_TRIGGER
 import com.parallelc.micts.config.XposedConfig.KEY_VIBRATE
 import com.parallelc.micts.module
@@ -35,17 +37,21 @@ class LongPressHomeHooker {
 
         class OnLongPressHooker : Hooker {
             override fun intercept(chain: Chain): Any? {
-                if (mKeyCode.getInt(chain.thisObject) == 3) {
-                    val prefs = module!!.getRemotePreferences(CONFIG_NAME)
-                    if (prefs.getBoolean(KEY_HOME_TRIGGER, DEFAULT_CONFIG[KEY_HOME_TRIGGER] as Boolean)) {
-                        val context = runCatching { mContext.get(chain.thisObject) as? Context }.getOrNull()
-                        triggerCircleToSearch(
-                            1,
-                            context,
-                            prefs.getBoolean(KEY_VIBRATE, DEFAULT_CONFIG[KEY_VIBRATE] as Boolean)
-                        )
-                        return null
-                    }
+                val keyCode = mKeyCode.getInt(chain.thisObject)
+                val prefs = module!!.getRemotePreferences(CONFIG_NAME)
+                val triggerEnabled = when (keyCode) {
+                    KeyEvent.KEYCODE_HOME -> prefs.getBoolean(KEY_HOME_TRIGGER, DEFAULT_CONFIG[KEY_HOME_TRIGGER] as Boolean)
+                    KeyEvent.KEYCODE_BACK -> prefs.getBoolean(KEY_BACK_TRIGGER, DEFAULT_CONFIG[KEY_BACK_TRIGGER] as Boolean)
+                    else -> false
+                }
+                if (triggerEnabled) {
+                    val context = runCatching { mContext.get(chain.thisObject) as? Context }.getOrNull()
+                    triggerCircleToSearch(
+                        1,
+                        context,
+                        prefs.getBoolean(KEY_VIBRATE, DEFAULT_CONFIG[KEY_VIBRATE] as Boolean)
+                    )
+                    return null
                 }
                 return chain.proceed()
             }
@@ -53,11 +59,15 @@ class LongPressHomeHooker {
 
         class SupportLongPressHooker : Hooker {
             override fun intercept(chain: Chain): Any? {
-                if (mKeyCode.getInt(chain.thisObject) == 3) {
-                    val prefs = module!!.getRemotePreferences(CONFIG_NAME)
-                    if (prefs.getBoolean(KEY_HOME_TRIGGER, DEFAULT_CONFIG[KEY_HOME_TRIGGER] as Boolean)) {
-                        return true
-                    }
+                val keyCode = mKeyCode.getInt(chain.thisObject)
+                val prefs = module!!.getRemotePreferences(CONFIG_NAME)
+                val triggerEnabled = when (keyCode) {
+                    KeyEvent.KEYCODE_HOME -> prefs.getBoolean(KEY_HOME_TRIGGER, DEFAULT_CONFIG[KEY_HOME_TRIGGER] as Boolean)
+                    KeyEvent.KEYCODE_BACK -> prefs.getBoolean(KEY_BACK_TRIGGER, DEFAULT_CONFIG[KEY_BACK_TRIGGER] as Boolean)
+                    else -> false
+                }
+                if (triggerEnabled) {
+                    return true
                 }
                 return chain.proceed()
             }

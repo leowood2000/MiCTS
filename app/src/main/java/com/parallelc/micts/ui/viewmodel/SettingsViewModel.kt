@@ -111,7 +111,9 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
             return
         }
         when (key) {
-            XposedConfig.KEY_TRIGGER_SERVICE, XposedConfig.KEY_GESTURE_TRIGGER -> {
+            XposedConfig.KEY_TRIGGER_SERVICE,
+            XposedConfig.KEY_GESTURE_TRIGGER,
+            XposedConfig.KEY_BACK_TRIGGER -> {
                 if (scope.contains("system") == false) {
                     _xposedService.value?.requestScope(listOf("system"), object: OnScopeEventListener{})
                 }

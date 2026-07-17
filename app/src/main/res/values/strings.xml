@@ -14,6 +14,7 @@
     <string name="access_xposed_service_failed">Access xposed service failed</string>
     <string name="system_trigger_service">System trigger service</string>
     <string name="trigger_by_long_press_home_button">Trigger by long press home button</string>
+    <string name="trigger_by_long_press_back_button">Trigger by long press back button</string>
     <string name="trigger_by_long_press_gesture_handle">Trigger by long press gesture handle</string>
     <string name="device_spoof_for_google">Device spoof for Google</string>
     <string name="manufacturer">Manufacturer</string>
