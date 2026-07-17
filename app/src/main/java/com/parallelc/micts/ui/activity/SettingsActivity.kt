@@ -360,6 +360,18 @@ fun SettingsPage(
             )
         }
 
+        if (isXiaomi) {
+            ListItem(
+                headlineContent = { Text(stringResource(R.string.trigger_by_long_press_back_button)) },
+                trailingContent = {
+                    Switch(
+                        checked = xposedConfig[XposedConfig.KEY_BACK_TRIGGER] as Boolean,
+                        onCheckedChange = { viewModel.updateXposedConfig(XposedConfig.KEY_BACK_TRIGGER, it) }
+                    )
+                }
+            )
+        }
+
         ListItem(
             headlineContent = { Text(stringResource(R.string.device_spoof_for_google)) },
             trailingContent = {

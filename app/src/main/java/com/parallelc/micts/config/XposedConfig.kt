@@ -30,6 +30,7 @@ object XposedConfig {
     const val KEY_TRIGGER_SERVICE = "trigger_service"
     const val KEY_GESTURE_TRIGGER = "gesture_trigger"
     const val KEY_HOME_TRIGGER = "home_trigger"
+    const val KEY_BACK_TRIGGER = "back_trigger"
     const val KEY_DEVICE_SPOOF = "device_spoof"
     const val KEY_SPOOF_MANUFACTURER = "spoof_manufacturer"
     const val KEY_SPOOF_BRAND = "spoof_brand"
@@ -41,6 +42,7 @@ object XposedConfig {
         KEY_TRIGGER_SERVICE to TriggerService.getSupportedServices().last().ordinal,
         KEY_GESTURE_TRIGGER to (Build.MANUFACTURER == "Xiaomi"),
         KEY_HOME_TRIGGER to (Build.MANUFACTURER == "Xiaomi" || Build.MANUFACTURER == "meizu"),
+        KEY_BACK_TRIGGER to false,
         KEY_DEVICE_SPOOF to true,
         KEY_SPOOF_MANUFACTURER to "Google",
         KEY_SPOOF_BRAND to "google",
